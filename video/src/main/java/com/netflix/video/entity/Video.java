@@ -1,13 +1,14 @@
 package com.netflix.video.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.netflix.video.model.Recommendation;
+import com.netflix.video.model.Recommendations;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +22,8 @@ public class Video {
 
     private String name;
     private String url;
+
+    @Transient
+    private List<Object> recommendation;
+
 }

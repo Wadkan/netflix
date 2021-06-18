@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/recommendtation")
+@RequestMapping("/recommendation")
 public class RecomendationController {
 
     @Autowired
@@ -25,8 +25,8 @@ public class RecomendationController {
     @Autowired
     private RecommendationRepository recommendationRepository;
 
-    @GetMapping("/recommendation/{id}")
-    public Recommendations getRecomendations(@PathVariable("id") Long id){
+    @GetMapping("/{id}")
+    public Recommendations getRecommendations(@PathVariable("id") Long id){
         return new Recommendations(
                 environment.getProperty("server.port"),
                 recommendationRepository.findRecommendationsByVideoId(id)

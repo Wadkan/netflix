@@ -31,7 +31,7 @@ public class RecomendationController {
         );
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public void updateRecommendations(@RequestBody RecommendationList recommendationList){
         recommendationRepository.saveAll(recommendationList.getRecommendations());
     }

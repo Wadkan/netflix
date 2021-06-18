@@ -26,9 +26,4 @@ public class RecommendationCaller {
         List<Object> recommendationsList = recommendations.getRecommendations();
         return recommendationsList;
     }
-
-    public void updateRecommendations(List<Object> recommendationList) {
-        log.info(recommendationList.toString());
-        restTemplate.postForObject(baseUrl + "update", recommendationList, ResponseEntity.class);
-    }
 }

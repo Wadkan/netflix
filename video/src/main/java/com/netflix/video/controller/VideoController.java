@@ -40,9 +40,8 @@ public class VideoController {
     }
 
     @PutMapping("/{id}")
-    public OneVideo updateVideoById(@PathVariable("id") Long id, @RequestBody Video updatedVideo) {
+    public OneVideo updateVideoById(@RequestBody Video updatedVideo) {
         videoRepository.save(updatedVideo);
-        recommendationCaller.updateRecommendations(updatedVideo.getRecommendation());
 
         return new OneVideo(
                 environment.getProperty("server.port"),

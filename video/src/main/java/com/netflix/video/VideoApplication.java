@@ -26,19 +26,19 @@ public class VideoApplication {
         return args -> {
             Video video1 = Video.builder()
                     .name("Lucifer")
-                    .url("https://www.youtube.com/watch?v=gMdMkuFYW7E")
+                    .url("gMdMkuFYW7E")
                     .build();
             videoRepository.save(video1);
 
             Video video2 = Video.builder()
                     .name("JWT")
-                    .url("https://www.youtube.com/watch?v=7Q17ubqLfaM&ab_channel=WebDevSimplifiedWebDevSimplified")
+                    .url("7Q17ubqLfaM")
                     .build();
             videoRepository.save(video2);
 
             Video video3 = Video.builder()
                     .name("Java vs Python")
-                    .url("https://www.youtube.com/watch?v=yrw16gSTgpc&ab_channel=IntellipaatIntellipaat")
+                    .url("yrw16gSTgpc")
                     .build();
             videoRepository.save(video3);
 

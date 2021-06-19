@@ -3,6 +3,7 @@ package com.netflix.video.recommendation.controller;
 import com.netflix.video.recommendation.entity.Recommendation;
 import com.netflix.video.recommendation.model.RecommendationList;
 import com.netflix.video.recommendation.repository.RecommendationRepository;
+import com.netflix.video.recommendation.service.RecommendationService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -19,22 +20,23 @@ import java.util.List;
 public class RecomendationController {
 
     @Autowired
-    private Environment environment;
+    RecommendationService recommendationService;
 
     @Autowired
-    private RecommendationRepository recommendationRepository;
+    private Environment environment;
+
 
     @GetMapping("/{id}")
-    public Recommendations getRecommendations(@PathVariable("id") Long id){
+    public Recommendations getRecommendations(@PathVariable("id") Long id) {
         return new Recommendations(
                 environment.getProperty("server.port"),
-                recommendationRepository.findRecommendationsByVideoId(id)
+                recommendationService.getAllRecommendation(id)
         );
     }
 
     @PutMapping("/update")
-    public void updateRecommendations(@RequestBody RecommendationList recommendationList){
-        recommendationRepository.saveAll(recommendationList.getRecommendations());
+    public void updateRecommendations(@RequestBody RecommendationList recommendationList) {
+        recommendationService.saveAllRecommendation(recommendationList.getRecommendations());
     }
 
     @Data

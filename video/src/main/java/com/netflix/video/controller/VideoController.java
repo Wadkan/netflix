@@ -36,42 +36,34 @@ public class VideoController {
         );
     }
 
-//    @PutMapping("/{id}")
-//    public OneVideo updateVideoById(@RequestBody Video updatedVideo) {
-//        videoRepository.save(updatedVideo);
-//
-//        return new OneVideo(
-//                environment.getProperty("server.port"),
-//                Optional.of(updatedVideo)
-//        );
-//    }
-//
-//    @GetMapping("/all")
-//    public Videos getAllVideos() {
-//        return new Videos(
-//                environment.getProperty("server.port"),
-//                videoRepository.findAll()
-//        );
-//    }
-//
-//    @GetMapping("/all-with-recommend")
-//    private Videos getAllVideosWithRecommendtations() {
-//
-//        List<Video> videosWithRecommendation = videoRepository.findAll();
-//
-//        videosWithRecommendation.stream().
-//                forEach(
-//                        video -> video.setRecommendation(recommendationCaller.getRecommendations(video.getId()))
-//                );
-//
-//
-//        Videos videos = new Videos(
-//                environment.getProperty("server.port"),
-//                videosWithRecommendation
-//        );
-//
-//        return videos;
-//    }
+    @PutMapping("/{id}")
+    public OneVideo updateVideoById(@RequestBody Video updatedVideo) {
+        videoService.saveVideo(updatedVideo);
+
+        return new OneVideo(
+                environment.getProperty("server.port"),
+                Optional.of(updatedVideo)
+        );
+    }
+
+    @GetMapping("/all")
+    public Videos getAllVideos() {
+        return new Videos(
+                environment.getProperty("server.port"),
+                videoService.getAllVideos()
+        );
+    }
+
+    @GetMapping("/all-with-recommend")
+    private Videos getAllVideosWithRecommendtations() {
+
+        Videos videos = new Videos(
+                environment.getProperty("server.port"),
+                videoService.getVideosWithRecommendation()
+        );
+
+        return videos;
+    }
 
 
     @Data

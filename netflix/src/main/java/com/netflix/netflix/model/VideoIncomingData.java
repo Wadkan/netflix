@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class VideoIncomingData {
-    private in
+//    private in
 
     // 3. video: 23:00
 }
